@@ -110,3 +110,54 @@ fun OnError(retryAction: () -> Unit, modifier: Modifier = Modifier) {
         }
     }
 }
+
+
+@Composable
+fun SiswaLayout(
+    dataSiswa: List<DataSiswa>,
+    modifier: Modifier = Modifier
+) {
+    LazyColumn(
+        modifier = modifier,
+        contentPadding = PaddingValues(16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        items(dataSiswa) { siswa ->
+            SiswaCard(
+                siswa = siswa,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable { }
+            )
+        }
+    }
+}
+
+@Composable
+fun SiswaCard(
+    siswa: DataSiswa,
+    modifier: Modifier = Modifier
+) {
+    Card(
+        modifier = modifier,
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            Text(
+                text = siswa.nama,
+                style = MaterialTheme.typography.titleLarge
+            )
+            Text(
+                text = "Alamat: ${siswa.alamat}",
+                style = MaterialTheme.typography.titleMedium
+            )
+            Text(
+                text = "Telpon: ${siswa.telpon}",
+                style = MaterialTheme.typography.titleMedium
+            )
+        }
+    }
+}
