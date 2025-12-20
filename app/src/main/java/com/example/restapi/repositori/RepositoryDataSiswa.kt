@@ -6,14 +6,17 @@ import com.example.restapi.modeldata.DataSiswa
 interface RepositoryDataSiswa {
     suspend fun getDataSiswa(): List<DataSiswa>
     suspend fun postDataSiswa(dataSiswa: DataSiswa)
-    // suspend fun getSatuSiswa(id: Int): DataSiswa
-    // suspend fun editSatuSiswa(id: Int, dataSiswa: DataSiswa)
-    // suspend fun hapusSatuSiswa(id: Int)
 }
 
 class JaringanRepositoryDataSiswa(
     private val serviceApiSiswa: ServiceApiSiswa
 ) : RepositoryDataSiswa {
-    override suspend fun getDataSiswa(): List<DataSiswa> = serviceApiSiswa.getSiswa()
-    override suspend fun postDataSiswa(dataSiswa: DataSiswa) = serviceApiSiswa.postSiswa(dataSiswa)
-}
+    override suspend fun getDataSiswa(): List<DataSiswa> {
+        return try {
+            serviceApiSiswa.getSiswa()
+        } catch (e: Exception) {
+            // If JSON parsing fails or response is empty, return empty list
+            e.printStackTrace()
+            emptyList()
+        }
+    }
