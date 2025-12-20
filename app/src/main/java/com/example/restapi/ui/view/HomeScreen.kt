@@ -33,3 +33,28 @@ fun HomeScreen(
     LaunchedEffect(Unit) {
         viewModel.getSiswa()
     }
+
+    Scaffold(
+        modifier = modifier,
+        topBar = {
+            TopAppBar(
+                title = { Text("Daftar Siswa") }
+            )
+        },
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = navigateToItemEntry,
+                shape = MaterialTheme.shapes.medium,
+                modifier = Modifier.padding(18.dp)
+            ) {
+                Icon(imageVector = Icons.Default.Add, contentDescription = "Tambah Kontak")
+            }
+        }
+    ) { innerPadding ->
+        HomeStatus(
+            homeUiState = viewModel.siswaUiState,
+            retryAction = viewModel::getSiswa,
+            modifier = Modifier.padding(innerPadding)
+        )
+    }
+}
