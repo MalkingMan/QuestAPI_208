@@ -13,10 +13,15 @@ interface ContainerApp {
     val repositoryDataSiswa: RepositoryDataSiswa
 }
 
-class DefaultContainerApp : ContainerApp {
-    private val baseUrl = "http://10.0.2.2/umyTI/"
+    class DefaultContainerApp : ContainerApp {
+        private val baseUrl = "http://10.0.2.2/tiumy/"
 
-    private val json = Json { ignoreUnknownKeys = true }
+    private val json = Json {
+        ignoreUnknownKeys = true
+        isLenient = true
+        coerceInputValues = true
+        encodeDefaults = false  // Jangan kirim field dengan nilai default/null
+    }
 
     private val logging = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
