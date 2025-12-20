@@ -20,3 +20,18 @@ class JaringanRepositoryDataSiswa(
             emptyList()
         }
     }
+
+
+    override suspend fun postDataSiswa(dataSiswa: DataSiswa) {
+        try {
+            val response = serviceApiSiswa.postSiswa(dataSiswa)
+            if (!response.isSuccessful) {
+                throw Exception("Insert failed: ${response.code()} - ${response.message()}")
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            throw e
+        }
+    }
+}
+
