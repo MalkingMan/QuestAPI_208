@@ -1,15 +1,17 @@
 ## 📸 Tampilan Aplikasi
 
 ### 📝 Form Input Data Siswa
-![Form Input Data](<img width="1080" height="2400" alt="Form" src="https://github.com/user-attachments/assets/e736c157-9311-4dc5-810f-a5dc7b15262c" />)
 
+<img width="1080" height="2400" alt="Form" src="https://github.com/user-attachments/assets/b137a180-383e-4376-98b4-7a5bc535f3d7" />
 
 ---
 
 ### 📋 Daftar Data Siswa
-![Daftar Data Siswa](<img width="1080" height="2400" alt="List" src="https://github.com/user-attachments/assets/e4c6f8a3-96b2-4353-a7b7-22ee00faabe3" />)
+
+<img width="1080" height="2400" alt="List" src="https://github.com/user-attachments/assets/79175766-8982-4c8f-a5a9-10c95791a102" />
 
 ---
 
 ### 🗄️ Database di phpMyAdmin
-![Database phpMyAdmin](<img width="960" height="510" alt="Database" src="https://github.com/user-attachments/assets/1d77235e-2a62-4560-ac9d-a2bdb9f2f374" />)
+
+<img width="960" height="510" alt="Database" src="https://github.com/user-attachments/assets/5236364a-3aa5-4383-a081-6f9602dfb617" />
