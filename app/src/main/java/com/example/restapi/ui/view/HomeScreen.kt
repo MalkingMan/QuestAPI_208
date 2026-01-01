@@ -71,8 +71,8 @@ fun HomeStatus(
     modifier: Modifier = Modifier
 ) {
     when (homeUiState) {
-        is StatusUiSiswa.Loading -> OnLoading(modifier = modifier.fillMaxSize())
-        is StatusUiSiswa.Success -> {
+        is com.example.restapi.ui.viewmodel.StatusUiSiswa.Loading -> OnLoading(modifier = modifier.fillMaxSize())
+        is com.example.restapi.ui.viewmodel.StatusUiSiswa.Success -> {
             if (homeUiState.siswa.isEmpty()) {
                 Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                     Text(text = "Tidak ada data")
