@@ -18,4 +18,17 @@ interface ServiceApiSiswa {
     suspend fun postSiswa(
         @Body dataSiswa: DataSiswa
     ): Response<Void> // Gunakan Void jika tidak butuh memparsing return body, atau buat data class ResponseSiswa
+
+    // Tambahan: endpoint untuk update dan delete (mengirim JSON mirip insert)
+    @Headers("Content-Type: application/json")
+    @POST("updateTM.php")
+    suspend fun updateSiswa(
+        @Body dataSiswa: DataSiswa
+    ): Response<Void>
+
+    @Headers("Content-Type: application/json")
+    @POST("deleteTM.php")
+    suspend fun deleteSiswa(
+        @Body payload: Map<String, Int> // misal { "id": 12 }
+    ): Response<Void>
 }
