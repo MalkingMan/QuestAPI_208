@@ -16,3 +16,11 @@ object DestinasiEntry : DestinasiNavigasi {
     override val route = "item_entry"
     override val titleRes = R.string.entry_siswa
 }
+
+object DestinasiDetail : DestinasiNavigasi {
+    override val route = "item_detail"
+    override val titleRes = R.string.detail_siswa
+    const val SISWA_ID = "siswaId"
+    val routeWithArgs = "$route/{$SISWA_ID}"
+}
+
