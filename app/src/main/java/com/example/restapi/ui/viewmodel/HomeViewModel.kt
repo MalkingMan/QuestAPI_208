@@ -31,7 +31,7 @@ class HomeViewModel(private val repositoryDataSiswa: RepositoryDataSiswa) : View
             siswaUiState = try {
                 StatusUiSiswa.Success(repositoryDataSiswa.getDataSiswa())
             } catch (e: IOException) {
-                StatusUiSiswa.Error
+                StatusUiSiswa.Error(e.message)
             } catch (e: HttpException) {
                 StatusUiSiswa.Error
             }
