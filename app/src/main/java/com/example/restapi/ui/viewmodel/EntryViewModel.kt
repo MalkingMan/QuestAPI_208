@@ -15,6 +15,10 @@ class EntryViewModel(private val repositoryDataSiswa: RepositoryDataSiswa) : Vie
     var uiStateSiswa by mutableStateOf(UIStateSiswa())
         private set
 
+    // status of last network operation: null = idle, true = success, false = failed
+    var lastOperationSuccess by mutableStateOf<Boolean?>(null)
+        private set
+
     fun updateUiState(detailSiswa: DetailSiswa) {
         uiStateSiswa = UIStateSiswa(detailSiswa = detailSiswa, isEntryValid = validasiInput(detailSiswa))
     }
