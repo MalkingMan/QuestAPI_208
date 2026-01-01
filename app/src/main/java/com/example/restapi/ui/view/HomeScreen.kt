@@ -80,8 +80,8 @@ fun HomeStatus(
             } else {
                 SiswaLayout(
                     dataSiswa = homeUiState.siswa,
-                    modifier = modifier.fillMaxWidth()
                     modifier = modifier.fillMaxWidth(),
+                    onDetailClick = onDetailClick
                 )
             }
         }
@@ -121,6 +121,7 @@ fun OnError(retryAction: () -> Unit, modifier: Modifier = Modifier) {
 @Composable
 fun SiswaLayout(
     dataSiswa: List<DataSiswa>,
+    onDetailClick: (DataSiswa) -> Unit,
     modifier: Modifier = Modifier
 ) {
     LazyColumn(
@@ -131,22 +132,24 @@ fun SiswaLayout(
         items(dataSiswa) { siswa ->
             SiswaCard(
                 siswa = siswa,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable { }
+                modifier = Modifier.fillMaxWidth(),
+                onCardClick = { onDetailClick(siswa) }
             )
         }
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SiswaCard(
     siswa: DataSiswa,
+    onCardClick: () -> Unit = {},
     modifier: Modifier = Modifier
 ) {
     Card(
         modifier = modifier,
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+        onClick = onCardClick
     ) {
         Column(
             modifier = Modifier.padding(16.dp),
