@@ -50,3 +50,9 @@ fun getSiswaById() {
                 } else {
                     DetailUiState.Error
                 }
+               } catch (e: Exception) {
+                e.printStackTrace()
+                DetailUiState.Error
+            }
+        }
+    }
