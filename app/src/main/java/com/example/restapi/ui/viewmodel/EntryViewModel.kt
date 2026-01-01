@@ -29,8 +29,23 @@ class EntryViewModel(private val repositoryDataSiswa: RepositoryDataSiswa) : Vie
         }
     }
 
-    suspend fun saveSiswa() {
-        if (validasiInput()) {
+    fun loadForEdit(detail: DetailSiswa) {
+        // prepare UI state for editing existing entry
+        uiStateSiswa = UIStateSiswa(detailSiswa = detail, isEntryValid = validasiInput(detail))
+    }
+
+    fun clearLastOperation() {
+        lastOperationSuccess = null
+    }
+
+    fun resetUiState() {
+        uiStateSiswa = UIStateSiswa()
+        lastOperationSuccess = null
+    }
+
+    fun saveSiswa() {
+        if (!validasiInput()) return
+        viewModelScope.launch {
             try {
                 repositoryDataSiswa.postDataSiswa(uiStateSiswa.detailSiswa.toDataSiswa())
             } catch (e: Exception) {
