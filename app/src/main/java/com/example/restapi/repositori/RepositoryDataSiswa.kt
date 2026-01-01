@@ -35,4 +35,28 @@ class JaringanRepositoryDataSiswa(
             throw e
         }
     }
+
+    override suspend fun updateDataSiswa(dataSiswa: DataSiswa) {
+        try {
+            val response = serviceApiSiswa.updateSiswa(dataSiswa)
+            if (!response.isSuccessful) {
+                throw Exception("Update failed: ${response.code()} - ${response.message()}")
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            throw e
+        }
+    }
+
+    override suspend fun deleteDataSiswa(id: Int) {
+        try {
+            val response = serviceApiSiswa.deleteSiswa(mapOf("id" to id))
+            if (!response.isSuccessful) {
+                throw Exception("Delete failed: ${response.code()} - ${response.message()}")
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            throw e
+        }
+    }
 }
