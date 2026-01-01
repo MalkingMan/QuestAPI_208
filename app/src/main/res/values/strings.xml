@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">restapi</string>
     <string name="entry_siswa">Entry Siswa</string>
+    <string name="detail_siswa">Detail Siswa</string>
     <string name="loading">Loading...</string>
     <string name="loading_failed">Gagal memuat data</string>
     <string name="retry">Coba Lagi</string>
