@@ -33,7 +33,22 @@ class HomeViewModel(private val repositoryDataSiswa: RepositoryDataSiswa) : View
             } catch (e: IOException) {
                 StatusUiSiswa.Error(e.message)
             } catch (e: HttpException) {
-                StatusUiSiswa.Error
+                StatusUiSiswa.Error(e.message())
+            } catch (e: Exception) {
+                StatusUiSiswa.Error(e.message)
+            }
+        }
+    }
+
+    fun deleteSiswa(id: Int, onResult: (Boolean) -> Unit = {}) {
+        viewModelScope.launch {
+            try {
+                repositoryDataSiswa.deleteDataSiswa(id)
+                onResult(true)
+                getSiswa()
+            } catch (e: Exception) {
+                e.printStackTrace()
+                onResult(false)
             }
         }
     }
