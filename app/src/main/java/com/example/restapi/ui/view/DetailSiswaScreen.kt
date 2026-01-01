@@ -31,3 +31,22 @@ class DetailViewModel(
     init {
         getSiswaById()
     }
+
+fun getSiswaById() {
+        viewModelScope.launch {
+            detailUiState = DetailUiState.Loading
+            detailUiState = try {
+                val allSiswa = repositoryDataSiswa.getDataSiswa()
+                val siswa = allSiswa.find { it.id == siswaId }
+                if (siswa != null) {
+                    DetailUiState.Success(
+                        DetailSiswa(
+                            id = siswa.id ?: 0,
+                            nama = siswa.nama,
+                            alamat = siswa.alamat,
+                            telpon = siswa.telpon
+                        )
+                    )
+                } else {
+                    DetailUiState.Error
+                }
