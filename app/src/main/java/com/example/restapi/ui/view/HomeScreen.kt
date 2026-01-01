@@ -52,7 +52,13 @@ fun HomeScreen(
         HomeStatus(
             homeUiState = viewModel.siswaUiState,
             retryAction = viewModel::getSiswa,
-            modifier = Modifier.padding(innerPadding)
+            modifier = Modifier.padding(innerPadding),
+            onDetailClick = { siswa ->
+                val id = siswa.id ?: 0
+                if (id > 0) {
+                    navigateToDetail(id)
+                }
+            }
         )
     }
 }
