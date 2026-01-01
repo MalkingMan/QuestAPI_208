@@ -81,10 +81,11 @@ fun HomeStatus(
                 SiswaLayout(
                     dataSiswa = homeUiState.siswa,
                     modifier = modifier.fillMaxWidth()
+                    modifier = modifier.fillMaxWidth(),
                 )
             }
         }
-        is StatusUiSiswa.Error -> OnError(retryAction, modifier = modifier.fillMaxSize())
+        is com.example.restapi.ui.viewmodel.StatusUiSiswa.Error -> OnError(retryAction, modifier = modifier.fillMaxSize())
     }
 }
 
