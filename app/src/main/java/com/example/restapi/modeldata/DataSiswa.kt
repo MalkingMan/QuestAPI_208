@@ -38,7 +38,7 @@ data class DetailSiswa(
 )
 
 fun DetailSiswa.toDataSiswa(): DataSiswa = DataSiswa(
-    id = null,  // Jangan kirim id untuk data baru, biarkan database auto-generate
+    id = if (id > 0) id else null,  // Include id for update, null for insert
     nama = nama,
     alamat = alamat,
     telpon = telpon
