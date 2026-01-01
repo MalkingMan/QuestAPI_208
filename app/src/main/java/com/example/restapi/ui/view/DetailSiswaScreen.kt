@@ -32,7 +32,7 @@ class DetailViewModel(
         getSiswaById()
     }
 
-fun getSiswaById() {
+    fun getSiswaById() {
         viewModelScope.launch {
             detailUiState = DetailUiState.Loading
             detailUiState = try {
@@ -50,9 +50,23 @@ fun getSiswaById() {
                 } else {
                     DetailUiState.Error
                 }
-               } catch (e: Exception) {
+            } catch (e: Exception) {
                 e.printStackTrace()
                 DetailUiState.Error
             }
         }
     }
+
+    fun deleteSiswa(onResult: (Boolean) -> Unit) {
+        viewModelScope.launch {
+            try {
+                repositoryDataSiswa.deleteDataSiswa(siswaId)
+                onResult(true)
+            } catch (e: Exception) {
+                e.printStackTrace()
+                onResult(false)
+            }
+        }
+    }
+}
+
