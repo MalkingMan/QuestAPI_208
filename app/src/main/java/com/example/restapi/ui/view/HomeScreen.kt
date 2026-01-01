@@ -65,8 +65,9 @@ fun HomeScreen(
 
 @Composable
 fun HomeStatus(
-    homeUiState: StatusUiSiswa,
+    homeUiState: com.example.restapi.ui.viewmodel.StatusUiSiswa,
     retryAction: () -> Unit,
+    onDetailClick: (DataSiswa) -> Unit,
     modifier: Modifier = Modifier
 ) {
     when (homeUiState) {
