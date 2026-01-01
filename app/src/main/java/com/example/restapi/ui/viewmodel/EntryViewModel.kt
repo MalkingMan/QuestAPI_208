@@ -47,11 +47,17 @@ class EntryViewModel(private val repositoryDataSiswa: RepositoryDataSiswa) : Vie
         if (!validasiInput()) return
         viewModelScope.launch {
             try {
-                repositoryDataSiswa.postDataSiswa(uiStateSiswa.detailSiswa.toDataSiswa())
+                val isEdit = uiStateSiswa.detailSiswa.id > 0
+                if (isEdit) {
+                    // send with id if editing
+                    repositoryDataSiswa.updateDataSiswa(uiStateSiswa.detailSiswa.toDataSiswa())
+                } else {
+                    repositoryDataSiswa.postDataSiswa(uiStateSiswa.detailSiswa.toDataSiswa())
+                }
+                lastOperationSuccess = true
             } catch (e: Exception) {
-                // Log error but don't crash
                 e.printStackTrace()
-                throw e // Re-throw to let caller know it failed
+                lastOperationSuccess = false
             }
         }
     }
