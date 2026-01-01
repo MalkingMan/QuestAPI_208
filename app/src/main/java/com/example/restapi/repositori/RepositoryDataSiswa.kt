@@ -50,11 +50,17 @@ class JaringanRepositoryDataSiswa(
 
     override suspend fun deleteDataSiswa(id: Int) {
         try {
+            println("Deleting siswa with id: $id")
             val response = serviceApiSiswa.deleteSiswa(mapOf("id" to id))
+            println("Delete response code: ${response.code()}")
             if (!response.isSuccessful) {
+                val errorBody = response.errorBody()?.string()
+                println("Delete error: $errorBody")
                 throw Exception("Delete failed: ${response.code()} - ${response.message()}")
             }
+            println("Delete successful")
         } catch (e: Exception) {
+            println("Delete exception: ${e.message}")
             e.printStackTrace()
             throw e
         }
