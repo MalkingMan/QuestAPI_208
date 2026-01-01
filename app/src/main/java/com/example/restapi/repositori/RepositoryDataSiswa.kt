@@ -6,6 +6,8 @@ import com.example.restapi.modeldata.DataSiswa
 interface RepositoryDataSiswa {
     suspend fun getDataSiswa(): List<DataSiswa>
     suspend fun postDataSiswa(dataSiswa: DataSiswa)
+    suspend fun updateDataSiswa(dataSiswa: DataSiswa)
+    suspend fun deleteDataSiswa(id: Int)
 }
 
 class JaringanRepositoryDataSiswa(
@@ -34,4 +36,3 @@ class JaringanRepositoryDataSiswa(
         }
     }
 }
-
