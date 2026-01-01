@@ -13,7 +13,7 @@ import retrofit2.HttpException
 
 sealed interface StatusUiSiswa {
     data class Success(val siswa: List<DataSiswa>) : StatusUiSiswa
-    object Error : StatusUiSiswa
+    data class Error(val message: String? = null) : StatusUiSiswa
     object Loading : StatusUiSiswa
 }
 
