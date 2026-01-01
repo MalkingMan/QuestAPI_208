@@ -22,3 +22,12 @@ class DetailViewModel(
     savedStateHandle: SavedStateHandle,
     private val repositoryDataSiswa: RepositoryDataSiswa
 ) : ViewModel() {
+
+    var detailUiState: DetailUiState by mutableStateOf(DetailUiState.Loading)
+        private set
+
+    private val siswaId: Int = checkNotNull(savedStateHandle[DestinasiDetail.SISWA_ID])
+
+    init {
+        getSiswaById()
+    }
