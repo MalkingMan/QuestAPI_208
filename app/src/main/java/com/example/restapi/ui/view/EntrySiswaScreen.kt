@@ -26,6 +26,7 @@ fun EntrySiswaScreen(
 ) {
     val coroutineScope = rememberCoroutineScope()
     val scrollState = rememberScrollState()
+    val isEditMode = viewModel.uiStateSiswa.detailSiswa.id > 0
 
     Scaffold(
         modifier = modifier,
