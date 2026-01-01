@@ -32,7 +32,7 @@ fun EntrySiswaScreen(
         modifier = modifier,
         topBar = {
             CenterAlignedTopAppBar(
-                title = { Text("Entry Siswa") },
+                title = { Text(if (isEditMode) "Edit Siswa" else "Tambah Siswa") },
                 navigationIcon = { }
             )
         }
@@ -43,6 +43,7 @@ fun EntrySiswaScreen(
             onSaveClick = {
                 coroutineScope.launch {
                     viewModel.saveSiswa()
+                    viewModel.resetUiState()
                     navigateBack()
                 }
             },
